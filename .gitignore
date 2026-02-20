@@ -1,0 +1,25 @@
+# Gradle
+.gradle/
+build/
+out/
+
+# Run directories (ForgeGradle dev environment)
+run/
+
+# IDE
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+*.eclipse
+
+# ForgeGradle cache
+fg_cache/
+
+# Mixin refmap (generated at compile time)
+src/main/resources/createpatched.refmap.json
+
+# OS
+.DS_Store
+Thumbs.db

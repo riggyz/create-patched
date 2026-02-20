@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "com.riggyz.createpatched.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "createpatched.refmap.json",
+  "mixins": [
+    "SchematicPrinterMixin",
+    "ContraptionCollisionMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
