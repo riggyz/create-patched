@@ -1,12 +1,12 @@
 # Create Patched
 
-A Forge 1.20.1 mod that backports two critical bugfixes from [Create 6.0.9+](https://github.com/Creators-of-Create/Create) to the last Forge 1.20.1 release of Create (`0.5.1.f`).
+A Forge 1.20.1 mod that backports two critical bugfixes from [Create 6.0.9+](https://github.com/Creators-of-Create/Create) to the last Forge 1.20.1 release of Create (`6.0.8`).
 
 ## Bugfixes
 
 ### 1 — Schematicannon NBT / Item Duplication (Placard Issue)
 
-**Problem:** The schematicannon in Create 0.5.1f does not respect NBT data on blocks tagged with
+**Problem:** The schematicannon in Create 6.0.8 does not respect NBT data on blocks tagged with
 `SAFE_NBT` (e.g. Placards).  Because the `ItemRequirement` for such blocks ignores NBT, the
 cannon matches *any* copy of the item rather than the specific NBT-bearing one, leading to item
 duplication or incorrect item consumption in survival mode.
@@ -19,7 +19,7 @@ performs strict NBT matching.
 ### 2 — Train / Contraption Collision Lag (Station Lag)
 
 **Problem:** Whenever a contraption's collision shape is rebuilt (e.g. a train entering a station),
-Create 0.5.1f calls `Shapes.or()` for every block in the contraption.  This boolean shape-union
+Create 6.0.8 calls `Shapes.or()` for every block in the contraption.  This boolean shape-union
 operation is O(n²) and causes multi-second lag spikes for large trains.
 
 **Fix:** Upstream work by Jozufozu in Creators-of-Create/Create replaces the shape-union with a
@@ -33,7 +33,7 @@ the quadratic rebuild cost.
 |------------|---------|
 | Minecraft  | 1.20.1  |
 | Forge      | 47.3.0+ |
-| Create     | 0.5.1.f |
+| Create     | 6.0.8   |
 
 ## Building
 

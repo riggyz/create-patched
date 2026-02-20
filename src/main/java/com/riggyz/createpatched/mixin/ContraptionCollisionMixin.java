@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
  * Eliminates the O(n²) lag spike that occurs when a train enters a station (or any time
  * a contraption's collision shape is rebuilt).
  *
- * <p>Root cause (Create 0.5.1f): {@link Contraption} builds its global collision shape by
+ * <p>Root cause (Create 6.0.8): {@link Contraption} builds its global collision shape by
  * repeatedly calling {@link net.minecraft.world.phys.shapes.Shapes#or} for every block in
  * the contraption.  {@code Shapes.or()} is extremely expensive because it computes the
  * boolean union of two VoxelShapes, growing the internal BSP tree on every call.  For a

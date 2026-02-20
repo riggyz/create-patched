@@ -19,7 +19,7 @@ import java.util.List;
  * Fixes item duplication / incorrect item consumption when the schematicannon places blocks
  * that carry NBT data and are tagged with {@code create:safe_nbt} (e.g. Placards).
  *
- * <p>Root cause: In Create 0.5.1f the {@link ItemRequirement} created for such blocks did not
+ * <p>Root cause: In Create 6.0.8 the {@link ItemRequirement} created for such blocks did not
  * include the block-entity NBT in the required {@link ItemStack}, so the cannon would match
  * <em>any</em> copy of that item regardless of its NBT, leading to duplication or wrong-item
  * consumption.

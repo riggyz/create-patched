@@ -29,6 +29,6 @@ Backports two bugfixes from Create 6.0.9+ to Forge 1.20.1:
 [[dependencies.createpatched]]
     modId="create"
     mandatory=true
-    versionRange="[0.5.1,0.6)"
+    versionRange="[6.0.8,7.0)"
     ordering="AFTER"
     side="BOTH"
