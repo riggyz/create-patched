@@ -1,6 +1,6 @@
 plugins {
-    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
-    id 'org.spongepowered.mixin' version '0.7.+'
+    id 'net.minecraftforge.gradle' version '6.0.16'
+    id 'org.spongepowered.mixin' version '0.7.38'
 }
 
 version = "${mod_version}"
@@ -74,7 +74,7 @@ dependencies {
     annotationProcessor "org.spongepowered:mixin:${mixin_version}:processor"
 }
 
-jar {
+tasks.named('jar', Jar).configure {
     manifest {
         attributes([
             'Specification-Title'     : mod_id,
@@ -86,13 +86,16 @@ jar {
             'MixinConfigs'            : "${mod_id}.mixins.json"
         ])
     }
+
+    // Required for Forge 1.20.1: reobfuscate the jar before distribution
+    finalizedBy tasks.named('reobfJar')
 }
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
 }
 
-processResources {
+tasks.named('processResources', ProcessResources).configure {
     def replaceProperties = [
         mod_id                  : mod_id,
         mod_name                : mod_name,
