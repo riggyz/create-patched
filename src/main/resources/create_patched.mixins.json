@@ -5,7 +5,11 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "create_patched.refmap.json",
   "mixins": [
-    "SchematicPrinterMixin"
+    "SchematicPrinterMixin",
+    "ContraptionMixin",
+    "ContraptionColliderMixin",
+    "ContraptionColliderAccessor",
+    "OrientedBBMixin"
   ],
   "client": [],
   "server": [],
