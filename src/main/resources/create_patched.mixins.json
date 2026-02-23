@@ -6,10 +6,7 @@
   "refmap": "create_patched.refmap.json",
   "mixins": [
     "SchematicPrinterMixin",
-    "ContraptionMixin",
-    "ContraptionColliderMixin",
-    "ContraptionColliderAccessor",
-    "OrientedBBMixin"
+    "ContraptionMixin"
   ],
   "client": [],
   "server": [],
