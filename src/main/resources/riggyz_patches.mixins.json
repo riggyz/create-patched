@@ -1,9 +1,9 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "com.riggyz.create_patched.mixin",
+  "package": "com.riggyz.riggyz_patches.mixin",
   "compatibilityLevel": "JAVA_17",
-  "refmap": "create_patched.refmap.json",
+  "refmap": "riggyz_patches.refmap.json",
   "mixins": [
     "SchematicPrinterMixin",
     "ContraptionMixin"

@@ -1,4 +1,4 @@
-package com.riggyz.create_patched.mixin;
+package com.riggyz.riggyz_patches.mixin;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,12 +22,6 @@ import org.spongepowered.asm.mixin.Shadow;
 /**
  * Fixes the physics shape recalculation lag by skipping the expensive
  * Shapes.joinUnoptimized() + .optimize() + .toAabbs() pipeline.
- *
- * Instead, we decompose each block's collision shape directly into AABBs.
- * This is O(n) instead of O(n²) and produces the same List<AABB> result
- * that the rest of the existing collision code already consumes.
- *
- * No other classes need to be changed.
  */
 @Mixin(value = Contraption.class, remap = false)
 public abstract class ContraptionMixin {
@@ -48,9 +42,8 @@ public abstract class ContraptionMixin {
 	public abstract ContraptionWorld getContraptionWorld();
 
 	/**
-	 * @author create_patched
-	 * @reason Fix O(n²) VoxelShape merging that causes lag spikes on large contraptions.
-	 *         Decompose each block's collision shape directly into AABBs instead.
+     * Fix O(n^2) VoxelShape merging that causes lag spikes on large contraptions.
+	 * Decompose each block's collision shape directly into AABBs instead.
 	 */
 	@Overwrite
 	private void gatherBBsOffThread() {

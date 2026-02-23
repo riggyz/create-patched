@@ -1,4 +1,4 @@
-package com.riggyz.create_patched.mixin;
+package com.riggyz.riggyz_patches.mixin;
 
 import com.llamalad7.mixinextras.sugar.Local;
 import com.simibubi.create.content.schematics.SchematicPrinter;

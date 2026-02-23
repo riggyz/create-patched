@@ -1,4 +1,4 @@
-package com.riggyz.create_patched;
+package com.riggyz.riggyz_patches;
 
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;

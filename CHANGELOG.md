@@ -20,5 +20,5 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Fixed
 - Fixed the schematicannon duplication bug
 
-[unreleased]: https://github.com/riggyz/worse-elytra/compare/v0.2.0...HEAD
-[0.1.0]: https://github.com/riggyz/worse-elytra/releases/tag/v0.1.0
+[unreleased]: https://github.com/riggyz/riggyz-patches/compare/v0.2.0...HEAD
+[0.1.0]: https://github.com/riggyz/riggyz-patches/releases/tag/v0.1.0

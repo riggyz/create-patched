@@ -1,4 +1,4 @@
-package com.riggyz.create_patched;
+package com.riggyz.riggyz_patches;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,9 +11,9 @@ public class Constants {
 
 	// NOTE: Meta constants
 	/** Constant for the mod id */
-	public static final String MOD_ID = "create_patched";
+	public static final String MOD_ID = "riggyz_patches";
 	/** Constant for the mod name */
-	public static final String MOD_NAME = "Create Patched";
+	public static final String MOD_NAME = "Riggyz'z Patches";
 	/** Constant for the mod specific logger */
 	public static final Logger LOG = LoggerFactory.getLogger(MOD_NAME);
 }
