@@ -22,6 +22,8 @@ import org.spongepowered.asm.mixin.Shadow;
 /**
  * Fixes the physics shape recalculation lag by skipping the expensive
  * Shapes.joinUnoptimized() + .optimize() + .toAabbs() pipeline.
+ *
+ * @see <a href="https://github.com/Creators-of-Create/Create/issues/6902">Create#6902</a>
  */
 @Mixin(value = Contraption.class, remap = false)
 public abstract class ContraptionMixin {
@@ -42,32 +44,39 @@ public abstract class ContraptionMixin {
 	public abstract ContraptionWorld getContraptionWorld();
 
 	/**
-     * Fix O(n^2) VoxelShape merging that causes lag spikes on large contraptions.
+	 * Fix VoxelShape merging that causes lag spikes on large contraptions.
 	 * Decompose each block's collision shape directly into AABBs instead.
+	 *
+	 * @author Riggyz
+	 * @reason To replace Shapes.joinUnoptimized() with direct per-block AABB decomposition
 	 */
 	@Overwrite
 	private void gatherBBsOffThread() {
 		getContraptionWorld();
+
 		if (simplifiedEntityColliderProvider != null) {
 			simplifiedEntityColliderProvider.cancel(false);
 		}
+
 		simplifiedEntityColliderProvider = CompletableFuture.supplyAsync(() -> {
-				List<AABB> result = new ArrayList<>();
-				for (Map.Entry<BlockPos, StructureBlockInfo> entry : blocks.entrySet()) {
-					StructureBlockInfo info = entry.getValue();
-					BlockPos localPos = entry.getKey();
-					VoxelShape collisionShape = info.state()
-						.getCollisionShape(collisionLevel, localPos, CollisionContext.empty());
-					if (collisionShape.isEmpty())
-						continue;
-					VoxelShape moved = collisionShape.move(
-						localPos.getX(), localPos.getY(), localPos.getZ());
-					result.addAll(moved.toAabbs());
+			List<AABB> result = new ArrayList<>();
+
+			for (Map.Entry<BlockPos, StructureBlockInfo> entry : blocks.entrySet()) {
+				StructureBlockInfo info = entry.getValue();
+				BlockPos localPos = entry.getKey();
+				VoxelShape collisionShape = info.state().getCollisionShape(collisionLevel, localPos, CollisionContext.empty());
+
+				if (collisionShape.isEmpty()) {
+					continue;
 				}
-				return result;
-			})
-			.thenAccept(r -> {
-				simplifiedEntityColliders = Optional.of(r);
-			});
+
+				VoxelShape moved = collisionShape.move(localPos.getX(), localPos.getY(), localPos.getZ());
+				result.addAll(moved.toAabbs());
+			}
+
+			return result;
+		}).thenAccept(r -> {
+			simplifiedEntityColliders = Optional.of(r);
+		});
 	}
 }

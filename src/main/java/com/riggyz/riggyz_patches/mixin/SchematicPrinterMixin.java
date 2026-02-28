@@ -13,8 +13,8 @@ import org.spongepowered.asm.mixin.injection.ModifyArg;
 /**
  * Mixin that fixes an NBT dupe for schematicannon items.
  * 
- * @see https://github.com/Creators-of-Create/Create/issues/9511
- * @see https://github.com/Creators-of-Create/Create/commit/b91757a3a55205e9888e70fb5cb5c2380b4724c7
+ * @see <a href="https://github.com/Creators-of-Create/Create/issues/9511">Create#9511</a>
+ * @see <a href="https://github.com/Creators-of-Create/Create/commit/b91757a3a55205e9888e70fb5cb5c2380b4724c7">Official Fix</a>
  */
 @Mixin(value = SchematicPrinter.class, remap = false)
 public class SchematicPrinterMixin {
@@ -22,7 +22,15 @@ public class SchematicPrinterMixin {
     @Shadow
     private SchematicLevel blockReader;
 
-    @ModifyArg(method = "getCurrentRequirement", at = @At(value = "INVOKE", target = "Lcom/simibubi/create/foundation/utility/BlockHelper;prepareBlockEntityData(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/entity/BlockEntity;)Lnet/minecraft/nbt/CompoundTag;"), index = 1)
+    @ModifyArg(
+        method = "getCurrentRequirement", 
+        at = @At(
+            value = "INVOKE", 
+            // CompoundTag data = BlockHelper.prepareBlockEntityData(blockState, >blockEntity<);
+            target = "Lcom/simibubi/create/foundation/utility/BlockHelper;prepareBlockEntityData(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/entity/BlockEntity;)Lnet/minecraft/nbt/CompoundTag;"
+        ), 
+        index = 1
+    )
     private BlockEntity fixBlockEntityArgument(BlockEntity original, @Local BlockPos target) {
         return blockReader.getBlockEntity(target);
     }

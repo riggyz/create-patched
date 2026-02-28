@@ -15,5 +15,5 @@ public class Constants {
 	/** Constant for the mod name */
 	public static final String MOD_NAME = "Riggyz'z Patches";
 	/** Constant for the mod specific logger */
-	public static final Logger LOG = LoggerFactory.getLogger(MOD_NAME);
+	public static final Logger LOG = LoggerFactory.getLogger(MOD_ID);
 }

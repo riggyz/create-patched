@@ -1,13 +1,9 @@
-# Create Patched
+# Riggyz's Patches
+A small Forge mod for that fixes some bugs that affect the survival player experience.
 
-The goal of this mod is to backport certain bigfixins in Create 6.0.9 to forge 1.20.1
+### Bugfixes
+- **[Create#9511](https://github.com/Creators-of-Create/Create/issues/9511):** The schematicannon reads the wrong block entity when calculating item requirements, allowing item duplication in survival.
+- **[Create#6902](https://github.com/Creators-of-Create/Create/issues/6902):** Large contraptions cause severe lag spikes due to a VoxelShape merging pass when recalculating physics shapes. Replaced with direct per-block AABB decomposition.
 
-Things like 
-- Schematicannons ignoring NBT data, allowing for survival dupes
-- Train hitbox calculations, making them unviable for larger uses
-- TBD
-
-## Citing Sources
-Any specific fixes that I have not written have been linked to in the relavant javadocs. I will also call out the authors here:
-
-- TODO: call out authors for some fixes
+## Acknowledgments
+If you only need Create bugfixes and don't need the other patches this mod provides, check out [create-6-0-8-backported-fixes](https://github.com/MrGazdag/create-6-0-8-backported-fixes) by MrGazdag.
