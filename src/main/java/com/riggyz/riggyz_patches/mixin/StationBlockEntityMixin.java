@@ -5,6 +5,7 @@ import java.util.UUID;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.simibubi.create.compat.computercraft.AbstractComputerBehaviour;
+import com.simibubi.create.compat.computercraft.events.ComputerEvent;
 import com.simibubi.create.compat.computercraft.events.StationTrainPresenceEvent;
 import com.simibubi.create.content.trains.station.StationBlockEntity;
 
@@ -37,11 +38,11 @@ public class StationBlockEntityMixin {
         method = "tick",
         at = @At(
             value = "INVOKE",
-            target = "Lcom/simibubi/create/compat/computercraft/AbstractComputerBehaviour;prepareComputerEvent(Lcom/simibubi/create/compat/computercraft/events/StationTrainPresenceEvent;)V"
+            target = "Lcom/simibubi/create/compat/computercraft/AbstractComputerBehaviour;prepareComputerEvent(Lcom/simibubi/create/compat/computercraft/events/ComputerEvent;)V"
         )
     )
-    private void guardNullTrainDepartureEvent(AbstractComputerBehaviour behaviour, StationTrainPresenceEvent event, Operation<Void> original) {
-        if (event.train == null) {
+    private void guardNullTrainDepartureEvent(AbstractComputerBehaviour behaviour, ComputerEvent event, Operation<Void> original) {
+        if (event instanceof StationTrainPresenceEvent presenceEvent && presenceEvent.train == null) {
             return;
         }
 

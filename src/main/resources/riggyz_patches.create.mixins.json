@@ -13,7 +13,8 @@
     "GantryContraptionEntityMixin"
   ],
   "client": [
-    "CopycatModelMixin"
+    "CopycatModelMixin",
+    "XaeroTrainMapMixin"
   ],
   "server": [],
   "injectors": {

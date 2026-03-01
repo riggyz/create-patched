@@ -1,6 +1,8 @@
 # Riggyz's Patches
 A small Forge mod that fixes bugs affecting the survival player experience.
 
+![CurseForge Downloads](https://img.shields.io/curseforge/dt/1473735?logo=curseforge&logoColor=%23F16436&link=https%3A%2F%2Fwww.curseforge.com%2Fminecraft%2Fmc-mods%2Friggyzs-patches)
+
 ### Create Bugfixes
 - **[Create#9511](https://github.com/Creators-of-Create/Create/issues/9511):** The schematicannon reads the wrong block entity when calculating item requirements, allowing item duplication in survival.
 - **[Create#6902](https://github.com/Creators-of-Create/Create/issues/6902):** Large contraptions cause severe lag spikes due to a VoxelShape merging pass when recalculating physics shapes. Replaced with direct per-block AABB decomposition.

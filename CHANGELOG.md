@@ -9,7 +9,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Added
 - Mixin plugin system for conditional mixin loading per mod
 - Separate mixin config for Create (`riggyz_patches.create.mixins.json`)
-- Separate mixin config for Create + Xaero's World Map compat (`riggyz_patches.create_xaero.mixins.json`)
 - Separate mixin config for VS2 (`riggyz_patches.vs2.mixins.json`)
 - Create is now an optional dependency
 - VS2 as an optional dependency
