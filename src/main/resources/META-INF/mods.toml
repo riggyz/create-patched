@@ -77,3 +77,9 @@ description='''${mod_description}'''
     versionRange="[6.0.8,6.0.9)"
     ordering="AFTER"
     side="BOTH"
+[[dependencies.${mod_id}]]
+    modId="valkyrienskies"
+    mandatory=false
+    versionRange="[2.4.0,)"
+    ordering="AFTER"
+    side="BOTH"
