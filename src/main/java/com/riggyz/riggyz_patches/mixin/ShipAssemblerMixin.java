@@ -44,8 +44,10 @@ public class ShipAssemblerMixin {
             be.load(new CompoundTag());
         }
 
-        // Remove the BE from the level before the block state change to BARRIER.
-        // This prevents onRemove() from finding a BE to drop items from.
+        /*
+         * Remove the BE from the level before the block state change to BARRIER.
+         * This prevents onRemove() from finding a BE to drop items from.
+         */
         if (blockEntity instanceof BlockEntity be) {
             if (be.getLevel() instanceof ServerLevel serverLevel) {
                 serverLevel.removeBlockEntity(be.getBlockPos());

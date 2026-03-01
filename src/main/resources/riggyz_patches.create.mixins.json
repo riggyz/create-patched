@@ -7,9 +7,14 @@
   "plugin": "com.riggyz.riggyz_patches.plugin.CreateMixinPlugin",
   "mixins": [
     "SchematicPrinterMixin",
-    "ContraptionMixin"
+    "ContraptionMixin",
+    "PortableItemInterfaceBlockEntityMixin",
+    "StationBlockEntityMixin",
+    "GantryContraptionEntityMixin"
   ],
-  "client": [],
+  "client": [
+    "CopycatModelMixin"
+  ],
   "server": [],
   "injectors": {
     "defaultRequire": 1
